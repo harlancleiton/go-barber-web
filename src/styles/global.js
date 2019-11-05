@@ -1,6 +1,6 @@
-import { createGlobalStyle, css } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
-export default createGlobalStyle`${css`
+export default createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
   * {
@@ -26,7 +26,7 @@ export default createGlobalStyle`${css`
     font: 14px 'Roboto', sans-serif;
   }
 
-  button: {
+  button {
     cursor: pointer;
   }
-`}`;
+`;
