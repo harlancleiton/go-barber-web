@@ -2,7 +2,7 @@ import { takeLatest, call, put, all } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 
 import api from '~/services/api';
-import { singInSuccess, singFailure } from './actions';
+import { singInSuccess, singFailure, singUpSuccess } from './actions';
 import history from '~/services/history';
 
 export function* singIn({ payload }) {
@@ -27,4 +27,27 @@ export function* singIn({ payload }) {
   }
 }
 
-export default all([takeLatest('@auth/SING_IN_REQUEST', singIn)]);
+export function* singUp({ payload }) {
+  try {
+    const { name, email, password } = payload;
+
+    yield call(api.post, '/users', {
+      name,
+      email,
+      password,
+      provider: true,
+    });
+
+    yield put(singUpSuccess());
+
+    history.push('/');
+  } catch (error) {
+    toast.error('Falha no cadastro');
+    yield put(singFailure());
+  }
+}
+
+export default all([
+  takeLatest('@auth/SING_IN_REQUEST', singIn),
+  takeLatest('@auth/SING_UP_REQUEST', singUp),
+]);
