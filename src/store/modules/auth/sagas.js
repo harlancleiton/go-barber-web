@@ -24,7 +24,7 @@ export function* singIn({ payload }) {
 
     history.push('/dashboard');
   } catch (error) {
-    toast.error('Fala na autenticação, verifique suas credencias');
+    toast.error('Falha na autenticação, verifique suas credencias');
     yield put(singFailure());
   }
 }

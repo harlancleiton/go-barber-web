@@ -31,7 +31,9 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "no-console": ["error", { "allow": ["tron"] }],
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "no-underscore-dangle": "off",
+    "no-case-declarations": "off"
   },
   "settings": {
     "import/resolver": {
