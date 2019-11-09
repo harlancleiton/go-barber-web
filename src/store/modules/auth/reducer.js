@@ -18,6 +18,11 @@ export default function auth(state = INITIAL_STATE, action) {
         draft.signed = true;
         draft.loading = false;
         break;
+      case '@auth/SING_OUT':
+        draft.token = null;
+        draft.signed = false;
+        draft.loading = false;
+        break;
       case '@auth/SING_UP_SUCCESS':
       case '@auth/SING_FAILURE':
         draft.loading = false;

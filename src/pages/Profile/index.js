@@ -4,6 +4,7 @@ import { Form, Input } from '@rocketseat/unform';
 import { Container } from './styles';
 import { updateProfileRequest } from '~/store/modules/user/actions';
 import AvatarInput from './AvatarInput';
+import { singOut } from '~/store/modules/auth/actions';
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -12,6 +13,10 @@ export default function Profile() {
 
   function handleSubmit(data) {
     dispatch(updateProfileRequest(data));
+  }
+
+  function handleSingOut() {
+    dispatch(singOut());
   }
 
   return (
@@ -35,7 +40,9 @@ export default function Profile() {
         <button type="submit">Atualizar perfi</button>
       </Form>
 
-      <button type="button">Sair do GoBarber</button>
+      <button type="button" onClick={handleSingOut}>
+        Sair do GoBarber
+      </button>
     </Container>
   );
 }
